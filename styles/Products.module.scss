@@ -1,0 +1,39 @@
+.products_container {
+    width: 90%;
+    margin: 0 auto;
+
+    .title_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 2rem;
+
+        .next_prev_button {
+            display: flex;
+            align-items: center;
+
+            button {
+                background-color: transparent;
+                border: none;
+
+                .prev,
+                .next {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .pages {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+        p {
+            color: #636363;
+            font-size: 1rem;
+        }
+    }
+}

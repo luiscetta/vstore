@@ -1,0 +1,43 @@
+.modal_container {
+    .modal_header {
+        .modal_title {
+            font-weight: bold;
+        }
+    }
+
+    .modal_body {
+        display: grid;
+        place-content: center;
+        padding: 1rem;
+
+        background-color: var(--main-gray);
+
+        label {
+            background-color: var(--header-orange);
+            color: var(--white);
+
+            margin-top: 1rem;
+            border-radius: 0.5rem 0.5rem 0 0;
+
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        input {
+            width: 20rem;
+            padding: 0.5rem;
+            border: 1px solid var(--header-blue);
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+
+        input::placeholder {
+            text-align: center;
+        }
+
+        input:focus {
+            outline: none;
+            border: 1px solid var(--header-orange);
+        }
+    }
+}
