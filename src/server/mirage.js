@@ -1,17 +1,21 @@
 import { createServer, Model } from "miragejs"
 
-export function makeServer({ environment = "test" } = {}) {
-    const server = createServer({
-        environment,
+import products from '../constants/products';
 
+export function makeServer() {
+    const server = createServer({
         models: {
             product: Model,
         },
 
         seeds(server) {
-            server.create("product", { name: "Inception", year: 2010 })
-            server.create("product", { name: "Interstellar", year: 2014 })
-            server.create("product", { name: "Dunkirk", year: 2017 })
+            products.shoes.forEach((shoe) => {
+                server.create("product", { ...shoe, sales: Math.floor(Math.random() * 500), code: `#MLB${Math.floor(Math.random() * 6458755536)}` });
+            });
+
+            // products.eletronics.forEach((eletronic, i) => {
+            //     server.create("product", { ...eletronic, id: i + 1, sales: Math.floor(Math.random() * 250), code: `MLB${Math.floor(Math.random() * 6458755536)}` });
+            // });
         },
 
         routes() {
@@ -20,6 +24,11 @@ export function makeServer({ environment = "test" } = {}) {
             this.get("/products", (schema) => {
                 return schema.products.all()
             })
+
+            this.post("/products", (schema, request) => {
+                const data = JSON.parse(request.requestBody);
+                return schema.products.create({ ...data, sales: 0, code: `MLB${Math.floor(Math.random() * 6458755536)}` });
+            });
 
             this.passthrough((request) => {
                 if (

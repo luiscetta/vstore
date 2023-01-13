@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons';
 
-import ProductTable from '../../../constants/ProductTable';
+import ProductTable from '../ProductTable';
 
 import styles from './Products.module.scss';
 
 
-export default function Products() {
-    let [products, setProducts] = useState([])
-
-    console.log("oi")
-
-    useEffect(() => {
-        fetch("/api/products")
-            .then((res) => res.json())
-            .then((json) => {
-                setProducts(json.products);
-            })
-            .catch(err => console.log(err));
-    }, []);
+export default function AllProducts({ products }) {
 
     return (
         <div className={styles.products_container}>
@@ -32,7 +20,7 @@ export default function Products() {
             </div>
 
             <div className={styles.table_container}>
-                <ProductTable />
+                <ProductTable products={products}/>
             </div>
             <span className={styles.pages}>
                 <p>Página 1 de 10</p>

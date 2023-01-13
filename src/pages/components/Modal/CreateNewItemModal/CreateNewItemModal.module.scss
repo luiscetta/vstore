@@ -6,14 +6,18 @@
     }
 
     .modal_body {
-        display: grid;
-        place-content: center;
-        padding: 1rem;
-
         background-color: var(--main-gray);
 
+        border-radius: 0 0 0.5rem 0.5rem;
+
+        .modal_form {
+            display: grid;
+            place-content: center;
+            padding: 1rem;
+        }
+
         label {
-            background-color: var(--header-orange);
+            background-color: var(--header-blue);
             color: var(--white);
 
             margin-top: 1rem;
@@ -29,6 +33,8 @@
             padding: 0.5rem;
             border: 1px solid var(--header-blue);
             border-radius: 0 0 0.5rem 0.5rem;
+
+            text-align: center;
         }
 
         input::placeholder {
@@ -38,6 +44,15 @@
         input:focus {
             outline: none;
             border: 1px solid var(--header-orange);
+        }
+
+        .modal_footer {
+            margin-top: 2rem;
+
+            .close_modal_button,
+            .create_item_button {
+                padding: 0.6rem 1.4rem;
+            }
         }
     }
 }
