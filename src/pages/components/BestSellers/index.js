@@ -2,7 +2,7 @@
 import React from 'react';
 import { CaretRightIcon, CaretLeftIcon } from '@radix-ui/react-icons';
 
-import styles from '../../../../styles/Bestsellers.module.scss';
+import styles from './Bestsellers.module.scss';
 
 export default function BestSellers() {
     return (

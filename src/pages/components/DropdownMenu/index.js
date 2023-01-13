@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-import styles from '../../../../styles/Dropdown.module.scss';
+import styles from './Dropdown.module.scss';
 
 export default function DropDownMenu() {
     return (

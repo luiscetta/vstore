@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
-import styles from '../../../../../styles/CreateNewItemModal.module.scss';
+import styles from './CreateNewItemModal.module.scss';
 
 export default function CreateNewItemModal({ handleCloseModal, show }) {
     return (

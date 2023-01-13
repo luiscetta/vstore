@@ -3,7 +3,7 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
 
-import styles from '../../../styles/ProductTable.module.scss';
+import styles from './ProductTable.module.scss';
 
 export default function ProductTable() {
     return (
@@ -29,7 +29,10 @@ export default function ProductTable() {
                     <td className={styles.price}>
                         <p>R$ 320,00</p>
                     </td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartFilledIcon className={styles.liked} /></td>
                 </tr>
@@ -42,7 +45,10 @@ export default function ProductTable() {
                         </span>
                     </td>
                     <td className={styles.price}>R$ 320,00</td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartIcon className={styles.no_liked} /></td>
                 </tr>
@@ -55,7 +61,10 @@ export default function ProductTable() {
                         </span>
                     </td>
                     <td className={styles.price}>R$ 320,00</td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartIcon className={styles.no_liked} /></td>
                 </tr>
@@ -68,7 +77,10 @@ export default function ProductTable() {
                         </span>
                     </td>
                     <td className={styles.price}>R$ 320,00</td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartIcon className={styles.no_liked} /></td>
                 </tr>
@@ -81,7 +93,10 @@ export default function ProductTable() {
                         </span>
                     </td>
                     <td className={styles.price}>R$ 320,00</td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartIcon className={styles.no_liked} /></td>
                 </tr>
@@ -94,7 +109,10 @@ export default function ProductTable() {
                         </span>
                     </td>
                     <td className={styles.price}>R$ 320,00</td>
-                    <td className={styles.sales}>105</td>
+                    <td className={styles.sales}>
+                        <span>Total de vendas 5.512</span> <br />
+                        105 vendas
+                    </td>
                     <td className={styles.stock}>250 und</td>
                     <td className={styles.fav}><HeartIcon className={styles.no_liked} /></td>
                 </tr>
