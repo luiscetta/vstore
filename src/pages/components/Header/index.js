@@ -4,9 +4,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import * as Avatar from '@radix-ui/react-avatar';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
-import styles from '../../../../styles/Header.module.scss';
 import DropDownMenu from '../DropdownMenu';
 import CreateNewItemModal from '../Modal/CreateNewItemModal';
+
+import styles from './Header.module.scss';
 
 export default function Header() {
     const [showModal, setShowModal] = useState(false);

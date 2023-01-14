@@ -2,9 +2,9 @@
 import React from 'react';
 import { CaretRightIcon, CaretLeftIcon } from '@radix-ui/react-icons';
 
-import styles from '../../../../styles/Bestsellers.module.scss';
+import styles from './Bestsellers.module.scss';
 
-export default function BestSellers() {
+export default function BestSellers({ products }) {
     return (
         <div className={styles.best_container}>
             <div className={styles.title_container}>
@@ -16,54 +16,26 @@ export default function BestSellers() {
                 </div>
             </div>
             <ul className={styles.list_container}>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
-                <li>
-                    <img src="https://static.netshoes.com.br/produtos/tenis-vans-authentic-lona-e-branco/06/DFR-0977-006/DFR-0977-006_zoom1.jpg?ts=1664534007&ims=544x" alt="black shoes" />
-                    <span>
-                        <p className={styles.price}>R$ 320,00</p>
-                        <p className={styles.sales}>105 vendas</p>
-                    </span>
-                    <a href='#'>Tênis Vans Authentic Preto</a>
-                </li>
+                {
+                    products.length
+                        ?
+                        products.map((product) => (
+                            <li key={product.id}>
+                                <img src={product.image} alt={product.alt} />
+                                <span>
+                                    <p className={styles.price}>{product.price}</p>
+                                    <p className={styles.sales}>{product.sales} vendas</p>
+                                </span>
+                                <a href='#'>{product.name}</a>
+                            </li>
+                        ))
+
+                        :
+
+                        <div className={styles.empty_best_list}>
+                            <h3>Não vendeu o bastante!</h3>
+                        </div>
+                }
             </ul>
             <span className={styles.pages}>
                 <p>Página 1 de 10</p>

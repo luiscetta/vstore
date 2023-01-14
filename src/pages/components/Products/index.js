@@ -1,10 +1,13 @@
 import React from 'react';
 import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons';
 
-import styles from '../../../../styles/Products.module.scss';
-import ProductTable from '../../../constants/ProductTable';
+import ProductTable from '../ProductTable';
 
-export default function Products() {
+import styles from './Products.module.scss';
+
+
+export default function AllProducts({ products }) {
+
     return (
         <div className={styles.products_container}>
             <div className={styles.title_container}>
@@ -17,7 +20,7 @@ export default function Products() {
             </div>
 
             <div className={styles.table_container}>
-                <ProductTable />
+                <ProductTable products={products}/>
             </div>
             <span className={styles.pages}>
                 <p>Página 1 de 10</p>
