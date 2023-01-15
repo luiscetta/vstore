@@ -50,51 +50,6 @@
     }
 }
 
-.navbar_products {
-    @extend .navbar_brand;
-
-    height: 10rem;
-
-    .container_products {
-        h2 {
-            color: var(--white);
-            font-weight: bold;
-        }
-
-        .input_container {
-            background-color: var(--white);
-            padding: 0 0.5rem;
-            border-radius: 0.5rem;
-
-            display: flex;
-            align-items: center;
-
-            .search_icon {
-                color: #99a0b07d;
-                margin-right: 0.5rem;
-                height: 1.3rem;
-                width: 1.3rem;
-            }
-
-            input {
-                border: none;
-                color: var(--header-blue);
-
-                height: 3.12rem;
-                width: 26.6rem;
-            }
-
-            input::placeholder {
-                color: #99a0b0;
-            }
-
-            input:focus {
-                outline: none;
-            }
-        }
-    }
-}
-
 .navbar_buttons {
     @extend .navbar_brand;
 

@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import CurrencyInput from 'react-currency-input';
 
-
 import styles from './CreateNewItemModal.module.scss';
 
 export default function CreateNewItemModal({ handleCloseModal, show }) {
@@ -23,16 +22,18 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
             name: productName,
             price: productPrice,
             stock: productStock,
+        })
+        .then(() => {
+            handleCloseModal();
         });
     }
 
     const handleImageUpload = (e) => {
         const [file] = e.target.files;
+        console.log("Image from input:", file);
         const reader = new FileReader();
+        reader.addEventListener("load", () => setProductImage(reader.result));
         reader.readAsDataURL(file);
-        const imageString = reader.result;
-        console.log("IMAGE:", imageString);
-        setProductImage(imageString);
     };
 
     const formatPrice = (e = {}, maskedValue) => {
