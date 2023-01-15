@@ -25,6 +25,10 @@ export function makeServer() {
                 return schema.products.all()
             })
 
+            this.get("/favorites", (schema) => {
+                return schema.products.all()
+            })
+
             this.post("/products", (schema, request) => {
                 const data = JSON.parse(request.requestBody);
                 return schema.products.create({ ...data, sales: 0, code: `MLB${Math.floor(Math.random() * 6458755536)}` });
