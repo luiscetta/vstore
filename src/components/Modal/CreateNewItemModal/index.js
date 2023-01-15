@@ -6,7 +6,7 @@ import CurrencyInput from 'react-currency-input';
 
 import styles from './CreateNewItemModal.module.scss';
 
-export default function CreateNewItemModal({ handleCloseModal, show }) {
+export default function CreateNewItemModal({ handleCloseModal, reloadProducts, show }) {
     const imageDefault = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
     const [productImage, setProductImage] = useState(imageDefault);
@@ -24,6 +24,7 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
             stock: productStock,
         })
         .then(() => {
+            reloadProducts();
             handleCloseModal();
         });
     }

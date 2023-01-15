@@ -19,28 +19,32 @@ export default function Home() {
   const [showFavorites, setShowFavorites] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-
-  console.log("showFavorites:", showFavorites);
+  const reloadProducts = () => getProducts().then((result) => setProducts(result));
+  const getProducts = async () => {
+    const { data } = await axios.get("/api/products");
+    return data.products;
+  };
 
   useEffect(() => {
-    setLoading(true);
-    setShowFavorites(JSON.parse(window.localStorage.getItem("showFavorites")));
-    axios.get("/api/products")
-      .then(({ data }) => {
-        const allProducts = data.products;
-
+    async function load() {
+      try {
+        setLoading(true);
+        const allProducts = await getProducts();
         if (products.length !== allProducts.length) {
           setProducts(allProducts);
           setBestSellers(allProducts.filter(p => p.sales > 200));
           setFavorites(allProducts.filter(p => p.favorite === true));
         }
-      })
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false));
-  }, [products.length, showFavorites]);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [products.length]);
 
   const addToFavorite = ({ id }) => {
     const data = products.shoes.find(item => item.id === id);
@@ -75,7 +79,7 @@ export default function Home() {
           </div>
 
           <button onClick={handleShowModal}>Criar novo</button>
-          <CreateNewItemModal handleCloseModal={handleCloseModal} show={showModal} />
+          <CreateNewItemModal handleCloseModal={handleCloseModal} show={showModal} reloadProducts={reloadProducts} />
         </Container>
       </Navbar>
 
