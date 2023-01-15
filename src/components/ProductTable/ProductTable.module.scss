@@ -1,3 +1,21 @@
+.title_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 2rem;
+
+    .next_prev_button {
+        display: flex;
+        align-items: center;
+
+        button {
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+
 .table_container {
     background-color: #f3f5f9;
 
@@ -58,5 +76,16 @@
                 }
             }
         }
+    }
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    p {
+        color: #636363;
+        font-size: 1rem;
     }
 }

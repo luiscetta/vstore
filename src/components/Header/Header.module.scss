@@ -108,6 +108,8 @@
             width: 10rem;
         }
 
+        .home_button,
+        .favorite_button,
         button {
             padding: 0.4rem;
             border: none;
@@ -116,6 +118,11 @@
             color: var(--white);
             background-color: var(--header-orange);
             border-radius: 0.5rem;
+        }
+
+        .home_button,
+        .favorite_button {
+            text-decoration: none;
         }
 
         button:disabled {

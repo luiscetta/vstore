@@ -31,6 +31,7 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         const imageString = reader.result;
+        console.log("IMAGE:", imageString);
         setProductImage(imageString);
     };
 
@@ -58,7 +59,7 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
                         <input
                             id="image"
                             type="file"
-                            image='image'
+                            name='image'
                             onChange={handleImageUpload}
                         />
                         <label htmlFor="name">Nome do produto</label>
