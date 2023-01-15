@@ -1,7 +1,7 @@
 import '../../styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from './components/Header';
+import Header from '../components/Header';
 import { makeServer } from '../server/mirage';
 
 

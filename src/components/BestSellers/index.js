@@ -1,25 +1,40 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
-import { CaretRightIcon, CaretLeftIcon } from '@radix-ui/react-icons';
+import React, { useMemo, useState } from 'react';
+import Pagination from '../Pagination';
 
 import styles from './Bestsellers.module.scss';
 
+
+let PageSize = 10;
+
 export default function BestSellers({ products }) {
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return products.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, products]);
+
     return (
         <div className={styles.best_container}>
             <div className={styles.title_container}>
                 <h3>Mais vendidos</h3>
 
                 <div className={styles.next_prev_button}>
-                    <button><CaretLeftIcon className={styles.prev} /></button>
-                    <button><CaretRightIcon className={styles.next} /></button>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalCount={products.length}
+                        pageSize={PageSize}
+                        onPageChange={page => setCurrentPage(page)}
+                    />
                 </div>
             </div>
             <ul className={styles.list_container}>
                 {
                     products.length
                         ?
-                        products.map((product) => (
+                        currentTableData.map((product) => (
                             <li key={product.id}>
                                 <img src={product.image} alt={product.alt} />
                                 <span>
@@ -38,7 +53,7 @@ export default function BestSellers({ products }) {
                 }
             </ul>
             <span className={styles.pages}>
-                <p>Página 1 de 10</p>
+                <p>Página {currentPage} de {products.lenght}</p>
             </span>
         </div>
     );

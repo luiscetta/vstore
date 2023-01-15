@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import { Button, Container, Navbar } from 'react-bootstrap';
 import * as Avatar from '@radix-ui/react-avatar';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import Link from 'next/link';
 
 import DropDownMenu from '../DropdownMenu';
 import CreateNewItemModal from '../Modal/CreateNewItemModal';
 
 import styles from './Header.module.scss';
 
+
 export default function Header() {
     const [showModal, setShowModal] = useState(false);
 
     const handleCloseModal = () => setShowModal(false);
     const handleShowModal = () => setShowModal(true);
+    const setShowFavorites = (show) => window.localStorage.setItem('showFavorites', show);
 
     return (
         <>
@@ -49,8 +51,8 @@ export default function Header() {
             <Navbar className={styles.navbar_buttons}>
                 <Container className={styles.container_buttons}>
                     <div className={styles.left_buttons}>
-                        <button>Todas</button>
-                        <button disabled>Favoritos</button>
+                        <Button className={styles.home_button} onClick={() => setShowFavorites(false)}>Todas</Button>
+                        <Button className={styles.favorite_button} onClick={() => setShowFavorites(true)}>Favoritos</Button>
                     </div>
 
                     <button onClick={handleShowModal}>Criar novo</button>

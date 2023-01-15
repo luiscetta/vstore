@@ -28,11 +28,18 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
 
     const handleImageUpload = (e) => {
         const [file] = e.target.files;
+<<<<<<< HEAD
         console.log("Image from input:", file);
         const reader = new FileReader();
         reader.readAsDataURL(file);
         const imageString = reader.result;
         console.log("Image:", imageString);
+=======
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        const imageString = reader.result;
+        console.log("IMAGE:", imageString);
+>>>>>>> c5d528063e43530507a4c642a371a83047908e2f
         setProductImage(imageString);
     };
 
