@@ -31,7 +31,13 @@ export function makeServer() {
 
             this.post("/products", (schema, request) => {
                 const data = JSON.parse(request.requestBody);
-                return schema.products.create({ ...data, sales: 0, code: `MLB${Math.floor(Math.random() * 6458755536)}` });
+                return schema.products.create({ ...data, sales: 0, code: `#MLB${Math.floor(Math.random() * 6458755536)}` });
+            });
+
+            this.patch("/products/:id", (schema, request) => {
+                const { id } = request.params;
+                const data = JSON.parse(request.requestBody);
+                return schema.products.find(id).update(data);
             });
 
             this.passthrough((request) => {

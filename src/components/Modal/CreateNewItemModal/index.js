@@ -4,10 +4,9 @@ import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import CurrencyInput from 'react-currency-input';
 
-
 import styles from './CreateNewItemModal.module.scss';
 
-export default function CreateNewItemModal({ handleCloseModal, show }) {
+export default function CreateNewItemModal({ handleCloseModal, reloadProducts, show }) {
     const imageDefault = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
 
     const [productImage, setProductImage] = useState(imageDefault);
@@ -23,24 +22,19 @@ export default function CreateNewItemModal({ handleCloseModal, show }) {
             name: productName,
             price: productPrice,
             stock: productStock,
+        })
+        .then(() => {
+            reloadProducts();
+            handleCloseModal();
         });
     }
 
     const handleImageUpload = (e) => {
         const [file] = e.target.files;
-<<<<<<< HEAD
         console.log("Image from input:", file);
         const reader = new FileReader();
+        reader.addEventListener("load", () => setProductImage(reader.result));
         reader.readAsDataURL(file);
-        const imageString = reader.result;
-        console.log("Image:", imageString);
-=======
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        const imageString = reader.result;
-        console.log("IMAGE:", imageString);
->>>>>>> c5d528063e43530507a4c642a371a83047908e2f
-        setProductImage(imageString);
     };
 
     const formatPrice = (e = {}, maskedValue) => {

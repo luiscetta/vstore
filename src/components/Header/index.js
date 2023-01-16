@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
-import { Button, Container, Navbar } from 'react-bootstrap';
+import React from 'react';
+import { Container, Navbar } from 'react-bootstrap';
 import * as Avatar from '@radix-ui/react-avatar';
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import Link from 'next/link';
 
 import DropDownMenu from '../DropdownMenu';
-import CreateNewItemModal from '../Modal/CreateNewItemModal';
 
 import styles from './Header.module.scss';
 
 
 export default function Header() {
-    const [showModal, setShowModal] = useState(false);
-
-    const handleCloseModal = () => setShowModal(false);
-    const handleShowModal = () => setShowModal(true);
-    const setShowFavorites = (show) => window.localStorage.setItem('showFavorites', show);
-
     return (
         <>
             <Navbar className={styles.navbar_brand}>
@@ -37,26 +28,6 @@ export default function Header() {
                         </Avatar.Root>
                         <DropDownMenu />
                     </div>
-                </Container>
-            </Navbar>
-            <Navbar className={styles.navbar_products}>
-                <Container className={styles.container_products}>
-                    <h2>Produtos</h2>
-                    <div className={styles.input_container}>
-                        <MagnifyingGlassIcon className={styles.search_icon} />
-                        <input type="search" placeholder="Buscar por produtos" />
-                    </div>
-                </Container>
-            </Navbar>
-            <Navbar className={styles.navbar_buttons}>
-                <Container className={styles.container_buttons}>
-                    <div className={styles.left_buttons}>
-                        <Button className={styles.home_button} onClick={() => setShowFavorites(false)}>Todas</Button>
-                        <Button className={styles.favorite_button} onClick={() => setShowFavorites(true)}>Favoritos</Button>
-                    </div>
-
-                    <button onClick={handleShowModal}>Criar novo</button>
-                    <CreateNewItemModal handleCloseModal={handleCloseModal} show={showModal} />
                 </Container>
             </Navbar>
         </>
