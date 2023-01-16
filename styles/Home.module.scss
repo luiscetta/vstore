@@ -69,9 +69,9 @@
       border-radius: 0.5rem;
     }
 
-    .home_button,
-    .favorite_button {
-      text-decoration: none;
+    .home_button_unselected,
+    .favorite_button_unselected {
+      background-color: #d3281180;
     }
 
     button:disabled {

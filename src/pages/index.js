@@ -46,11 +46,25 @@ export default function Home() {
     load();
   }, [products.length]);
 
-  const addToFavorite = ({ id }) => {
-    const data = products.shoes.find(item => item.id === id);
-    setProducts({
-      productsFav: [...products.productsFav, data]
-    });
+  // '#D32811' : '#f84894'
+  // qual dessas duas é a cor de "desabilitado"?
+  // é a rosa mas só botei a rosa pra diferenciar, dps vou colocar a que tá no figma
+  // mas é qual dos dois códigos?
+  // rosa é o disabled, quando não tá selecionado
+  // mas é #D32811 ou o outro?
+  // essa cor aí é a default
+  // cadê o css desse cara?
+  // ta na pasta Styles, home.module.scss
+  // testa aí
+  // mudou a cor da letra
+  // sim, porque color é só a letra, tem que ser background-color eu acho
+  // yes
+  // tô te seguindo
+
+  
+
+  const favoriteHandler = async (id, value) => {
+    await axios.patch(`/api/products/${id}`, { favorite: value });
   };
 
   return (
@@ -74,8 +88,8 @@ export default function Home() {
       <Navbar className={styles.navbar_buttons}>
         <Container className={styles.container_buttons}>
           <div className={styles.left_buttons}>
-            <Button className={styles.home_button} onClick={() => setShowFavorites(false)}>Todas</Button>
-            <Button className={styles.favorite_button} onClick={() => setShowFavorites(true)}>Favoritos</Button>
+            <Button className={showFavorites ? styles.home_button_unselected : styles.home_button} onClick={() => setShowFavorites(false)}>Todas</Button>
+            <Button className={showFavorites ? styles.favorite_button : styles.favorite_button_unselected} onClick={() => setShowFavorites(true)}>Favoritos</Button>
           </div>
 
           <button onClick={handleShowModal}>Criar novo</button>
@@ -88,7 +102,7 @@ export default function Home() {
           :
           <main className={styles.main}>
             <BestSellers products={bestSellers} />
-            <Products products={showFavorites ? favorites : products} addToFavorite={addToFavorite} />
+            <Products products={products} favoriteHandler={favoriteHandler} showFavorites={showFavorites} />
           </main>
       }
     </>
