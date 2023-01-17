@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useMemo, useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import { Pagination, Table } from 'react-bootstrap';
 import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
+import usePagination from '../../hooks/usePagination';
 
 import styles from './ProductTable.module.scss';
-import Pagination from '../Pagination';
 
 
 export default function ProductTable({ products, favoriteHandler, showFavorites }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [markedAsFavorite, setMarkedAsFavorite] = useState(products.filter(p => p.favorite));
-    const PageSize = 5;
+    const productsPerPage = 5;
+    const pageCount = Math.ceil(products.length / productsPerPage);
 
     const handleFavorites = (product) => {
         if (markedAsFavorite.find(p => p.id === product.id)) {
@@ -26,24 +27,24 @@ export default function ProductTable({ products, favoriteHandler, showFavorites 
         }
     };
 
-    const currentTableData = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
-        const lastPageIndex = firstPageIndex + PageSize;
-        if (showFavorites) return markedAsFavorite.slice(firstPageIndex, lastPageIndex);
-        return products.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, products, markedAsFavorite, showFavorites]);
+    const onNextPage = () => setCurrentPage(currentPage + 1);
+    const onPreviousPage = () => setCurrentPage(currentPage - 1);
+
+    const productsToShow = usePagination({
+        currentPage,
+        items: showFavorites ? markedAsFavorite : products,
+        itemsPerPage: productsPerPage,
+    });
 
     return (
         <>
             <div className={styles.title_container}>
                 <h3>{showFavorites ? 'Meus favoritos' : 'Todos os produtos'}</h3>
                 <div className={styles.next_prev_button}>
-                    <Pagination
-                        currentPage={currentPage}
-                        totalCount={(products.length / 5).toFixed()}
-                        pageSize={PageSize}
-                        onPageChange={page => setCurrentPage(page)}
-                    />
+                    <Pagination>
+                        <Pagination.Prev onClick={onPreviousPage} disabled={currentPage === 1} />
+                        <Pagination.Next onClick={onNextPage} disabled={currentPage === pageCount} />
+                    </Pagination>
                 </div>
             </div>
 
@@ -59,7 +60,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites 
                 </thead>
                 <tbody>
                     {
-                        currentTableData.map((product, idx) => (
+                        productsToShow.map((product, idx) => (
                             <tr key={idx}>
                                 <td className={styles.item}>
                                     <img src={product.image} alt={product.name} />
@@ -92,7 +93,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites 
                 </tbody>
             </Table>
             <span className={styles.pages}>
-                <p>Página {currentPage} de {(products.length / 5).toFixed()}</p>
+                <p>Página {currentPage} de {pageCount}</p>
             </span>
         </>
     );
