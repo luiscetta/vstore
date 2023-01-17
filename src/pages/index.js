@@ -46,23 +46,6 @@ export default function Home() {
     load();
   }, [products.length]);
 
-  // '#D32811' : '#f84894'
-  // qual dessas duas é a cor de "desabilitado"?
-  // é a rosa mas só botei a rosa pra diferenciar, dps vou colocar a que tá no figma
-  // mas é qual dos dois códigos?
-  // rosa é o disabled, quando não tá selecionado
-  // mas é #D32811 ou o outro?
-  // essa cor aí é a default
-  // cadê o css desse cara?
-  // ta na pasta Styles, home.module.scss
-  // testa aí
-  // mudou a cor da letra
-  // sim, porque color é só a letra, tem que ser background-color eu acho
-  // yes
-  // tô te seguindo
-
-  
-
   const favoriteHandler = async (id, value) => {
     await axios.patch(`/api/products/${id}`, { favorite: value });
   };

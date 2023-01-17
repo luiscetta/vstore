@@ -41,7 +41,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites 
             <div className={styles.title_container}>
                 <h3>{showFavorites ? 'Meus favoritos' : 'Todos os produtos'}</h3>
                 <div className={styles.next_prev_button}>
-                    <Pagination>
+                    <Pagination className={styles.pagination_button_content}>
                         <Pagination.Prev onClick={onPreviousPage} disabled={currentPage === 1} />
                         <Pagination.Next onClick={onNextPage} disabled={currentPage === pageCount} />
                     </Pagination>

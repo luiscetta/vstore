@@ -26,7 +26,7 @@ export default function BestSellers({ products }) {
                 <h3>Mais vendidos</h3>
 
                 <div className={styles.next_prev_button}>
-                    <Pagination>
+                    <Pagination className={styles.pagination_button_content}>
                         <Pagination.Prev onClick={onPreviousPage} disabled={currentPage === 1} />
                         <Pagination.Next onClick={onNextPage} disabled={currentPage === pageCount} />
                     </Pagination>
