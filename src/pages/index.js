@@ -14,7 +14,6 @@ import styles from '../../styles/Home.module.scss';
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
-  const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -36,7 +35,6 @@ export default function Home() {
         if (products.length !== allProducts.length) {
           setProducts(allProducts);
           setBestSellers(allProducts.filter(p => p.sales > 200));
-          setFavorites(allProducts.filter(p => p.favorite === true));
         }
       } catch (err) {
         console.error(err);
@@ -46,17 +44,6 @@ export default function Home() {
     }
     load();
   }, [products.length]);
-
-  const favoriteHandler = async (id, value) => {
-    await axios.patch(`/api/products/${id}`, { favorite: value });
-  };
-
-  const filteredSearch = useMemo(() => {
-    const searchLowerCase = search.toLocaleLowerCase();
-    return products.filter((product) =>
-      product.name.toLocaleLowerCase().includes(searchLowerCase)
-    );
-  }, [products, search]);
 
   return (
     <>
@@ -101,9 +88,8 @@ export default function Home() {
               products={bestSellers}
             />
             <Products
-              filteredSearch={filteredSearch}
+              search={search}
               products={products}
-              favoriteHandler={favoriteHandler}
               showFavorites={showFavorites}
             />
           </main>

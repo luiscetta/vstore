@@ -40,7 +40,7 @@ export default function BestSellers({ products }) {
                             <li key={product.id}>
                                 <img src={product.image} alt={product.alt} />
                                 <span>
-                                    <p className={styles.price}>{product.price}</p>
+                                    <p className={styles.price}>R$ {product.price}</p>
                                     <p className={styles.sales}>{product.sales} vendas</p>
                                 </span>
                                 <a href='#'>{product.name}</a>

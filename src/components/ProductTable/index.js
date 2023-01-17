@@ -1,45 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Pagination, Table } from 'react-bootstrap';
 import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
-import usePagination from '../../hooks/usePagination';
 
+import usePagination from '../../hooks/usePagination';
 import styles from './ProductTable.module.scss';
 
 
-export default function ProductTable({ products, favoriteHandler, showFavorites, filteredSearch }) {
+export default function ProductTable({ favoriteHandler, markedAsFavorite, products, title }) {
     const [currentPage, setCurrentPage] = useState(1);
-    const [markedAsFavorite, setMarkedAsFavorite] = useState(products.filter(p => p.favorite));
     const productsPerPage = 5;
     const pageCount = Math.ceil(products.length / productsPerPage);
 
-    const handleFavorites = (product) => {
-        if (markedAsFavorite.find(p => p.id === product.id)) {
-            setMarkedAsFavorite(prev => {
-                const updated = [...prev];
-                return updated.filter(p => p.id !== product.id);
-            });
-            favoriteHandler(product.id, false);
-        }
-        else {
-            setMarkedAsFavorite(prev => [...prev, product]);
-            favoriteHandler(product.id, true);
-        }
-    };
+    const productsToShow = usePagination({
+        currentPage,
+        items: products,
+        itemsPerPage: productsPerPage,
+    });
 
     const onNextPage = () => setCurrentPage(currentPage + 1);
     const onPreviousPage = () => setCurrentPage(currentPage - 1);
 
-    const productsToShow = usePagination({
-        currentPage,
-        items: showFavorites ? markedAsFavorite : products,
-        itemsPerPage: productsPerPage,
-    });
-
     return (
         <>
             <div className={styles.title_container}>
-                <h3>{showFavorites ? 'Meus favoritos' : 'Todos os produtos'}</h3>
+                <h3>{title}</h3>
                 <div className={styles.next_prev_button}>
                     <Pagination className={styles.pagination_button_content}>
                         <Pagination.Prev onClick={onPreviousPage} disabled={currentPage === 1} />
@@ -60,7 +45,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites,
                 </thead>
                 <tbody>
                     {
-                        filteredSearch.map((product, idx) => (
+                        productsToShow.map((product, idx) => (
                             <tr key={idx}>
                                 <td className={styles.item}>
                                     <img src={product.image} alt={product.name} />
@@ -78,7 +63,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites,
                                 </td>
                                 <td className={styles.stock}>{product.stock} und</td>
                                 <td className={styles.fav}>
-                                    <button onClick={() => handleFavorites(product)} >
+                                    <button onClick={() => favoriteHandler(product)} >
                                         {
                                             markedAsFavorite.find(p => p.id === product.id) ?
                                                 <HeartFilledIcon className={styles.liked} />
