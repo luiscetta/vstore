@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pagination, Table } from 'react-bootstrap';
 import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
 
@@ -21,6 +21,10 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
     const onNextPage = () => setCurrentPage(currentPage + 1);
     const onPreviousPage = () => setCurrentPage(currentPage - 1);
 
+    useEffect(() => {
+        if (currentPage > pageCount) setCurrentPage(1);
+    }, [currentPage, pageCount]);
+
     return (
         <>
             <div className={styles.title_container}>
@@ -33,53 +37,66 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                 </div>
             </div>
 
-            <Table className={styles.table_container}>
-                <thead>
-                    <tr>
-                        <th>Identificação</th>
-                        <th>Preço</th>
-                        <th>Vendas</th>
-                        <th>Estoque</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        productsToShow.map((product, idx) => (
-                            <tr key={idx}>
-                                <td className={styles.item}>
-                                    <img src={product.image} alt={product.name} />
-                                    <span>
-                                        <a href='#'>{product.name}</a>
-                                        <p>{product.code}</p>
-                                    </span>
-                                </td>
-                                <td className={styles.price}>
-                                    <p>R$ {product.price}</p>
-                                </td>
-                                <td className={styles.sales}>
-                                    <span>Total de vendas {product.totalSales}</span> <br />
-                                    {product.sales} vendas
-                                </td>
-                                <td className={styles.stock}>{product.stock} und</td>
-                                <td className={styles.fav}>
-                                    <button onClick={() => favoriteHandler(product)} >
-                                        {
-                                            markedAsFavorite.find(p => p.id === product.id) ?
-                                                <HeartFilledIcon className={styles.liked} />
-                                                :
-                                                <HeartIcon className={styles.like} />
-                                        }
-                                    </button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </Table>
-            <span className={styles.pages}>
-                <p>Página {currentPage} de {pageCount}</p>
-            </span>
+            {
+                products.length
+                    ?
+                    <>
+                        <Table className={styles.table_container}>
+                            <thead>
+                                <tr>
+                                    <th>Identificação</th>
+                                    <th>Preço</th>
+                                    <th>Vendas</th>
+                                    <th>Estoque</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    productsToShow.map((product, idx) => (
+                                        <tr key={idx}>
+                                            <td className={styles.item}>
+                                                <img src={product.image} alt={product.name} />
+                                                <span>
+                                                    <a href='#'>{product.name}</a>
+                                                    <p>{product.code}</p>
+                                                </span>
+                                            </td>
+                                            <td className={styles.price}>
+                                                <p>R$ {product.price}</p>
+                                            </td>
+                                            <td className={styles.sales}>
+                                                <span>Total de vendas {product.totalSales}</span> <br />
+                                                {product.sales} vendas
+                                            </td>
+                                            <td className={styles.stock}>{product.stock} und</td>
+                                            <td className={styles.fav}>
+                                                <button onClick={() => favoriteHandler(product)} >
+                                                    {
+                                                        markedAsFavorite.find(p => p.id === product.id) ?
+                                                            <HeartFilledIcon className={styles.liked} />
+                                                            :
+                                                            <HeartIcon className={styles.like} />
+                                                    }
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </Table>
+                        <span className={styles.pages}>
+                            <p>Página {currentPage} de {pageCount}</p>
+                        </span>
+                    </>
+
+                    :
+
+                    <div className={styles.empty_table}>
+                        <h2>Nenhum produto para exibir.</h2>
+                    </div>
+
+            }
         </>
     );
 }

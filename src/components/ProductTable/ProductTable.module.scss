@@ -92,6 +92,12 @@
     }
 }
 
+.empty_table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .pages {
     display: flex;
     align-items: center;

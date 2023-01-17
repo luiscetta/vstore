@@ -13,7 +13,7 @@ export default function Products({ products, showFavorites, search }) {
     const productsFromSearch = useMemo(() => {
         const searchLowerCase = search.toLowerCase();
         return products.filter((product) =>
-          product.name.toLowerCase().includes(searchLowerCase)
+            product.name.toLowerCase().includes(searchLowerCase)
         );
     }, [products, search]);
 
