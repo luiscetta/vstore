@@ -18,6 +18,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [search, setSearch] = useState('');
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -50,6 +51,11 @@ export default function Home() {
     await axios.patch(`/api/products/${id}`, { favorite: value });
   };
 
+  const searchLowerCase = search.toLocaleLowerCase();
+  const filteredSearch = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(searchLowerCase)
+  );
+
   return (
     <>
       <Helmet>
@@ -64,7 +70,12 @@ export default function Home() {
           <h2>Produtos</h2>
           <div className={styles.input_container}>
             <MagnifyingGlassIcon className={styles.search_icon} />
-            <input type="search" placeholder="Buscar por produtos" />
+            <input
+              type="search"
+              placeholder="Buscar por produtos"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </Container>
       </Navbar>
@@ -84,8 +95,15 @@ export default function Home() {
         loading ? <Loading />
           :
           <main className={styles.main}>
-            <BestSellers products={bestSellers} />
-            <Products products={products} favoriteHandler={favoriteHandler} showFavorites={showFavorites} />
+            <BestSellers
+              products={bestSellers}
+            />
+            <Products
+              filteredSearch={filteredSearch}
+              products={products}
+              favoriteHandler={favoriteHandler}
+              showFavorites={showFavorites}
+            />
           </main>
       }
     </>

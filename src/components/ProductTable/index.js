@@ -7,7 +7,7 @@ import usePagination from '../../hooks/usePagination';
 import styles from './ProductTable.module.scss';
 
 
-export default function ProductTable({ products, favoriteHandler, showFavorites }) {
+export default function ProductTable({ products, favoriteHandler, showFavorites, filteredSearch }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [markedAsFavorite, setMarkedAsFavorite] = useState(products.filter(p => p.favorite));
     const productsPerPage = 5;
@@ -60,7 +60,7 @@ export default function ProductTable({ products, favoriteHandler, showFavorites 
                 </thead>
                 <tbody>
                     {
-                        productsToShow.map((product, idx) => (
+                        filteredSearch.map((product, idx) => (
                             <tr key={idx}>
                                 <td className={styles.item}>
                                     <img src={product.image} alt={product.name} />
