@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons';
+import React from 'react';
 
 import ProductTable from '../ProductTable';
 

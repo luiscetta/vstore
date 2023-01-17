@@ -23,10 +23,10 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
             price: productPrice,
             stock: productStock,
         })
-        .then(() => {
-            reloadProducts();
-            handleCloseModal();
-        });
+            .then(() => {
+                reloadProducts();
+                handleCloseModal();
+            });
     }
 
     const handleImageUpload = (e) => {
