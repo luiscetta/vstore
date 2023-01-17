@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
-import CurrencyInput from 'react-currency-input';
+import CurrencyInput from 'react-currency-input-field';
 
 import styles from './CreateNewItemModal.module.scss';
 
@@ -79,12 +79,12 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
                             required
                             prefix="R$"
                             decimalSeparator=","
-                            thousandSeparator="."
+                            groupSeparator="."
                             precision={2}
-                            allowNegative={false}
+                            allowNegativeValue={false}
                             name="price"
                             placeholder='R$00,00'
-                            onChangeEvent={formatPrice}
+                            onValueChange={formatPrice}
                             value={productPrice}
                         />
                         <label htmlFor="stock">Estoque</label>

@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Pagination, Table } from 'react-bootstrap';
 import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
+import Lottie from 'lottie-react';
 
 import usePagination from '../../hooks/usePagination';
+import animationData from '../assets/json/empty.json';
 import styles from './ProductTable.module.scss';
 
 
@@ -94,6 +96,12 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
 
                     <div className={styles.empty_table}>
                         <h2>Nenhum produto para exibir.</h2>
+                        {/* <Lottie
+                            style={{ height: '8rem' }}
+                            animationData={animationData}
+                            loop={true}
+                            autoplay={true}
+                        /> */}
                     </div>
 
             }

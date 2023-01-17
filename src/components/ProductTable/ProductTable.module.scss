@@ -96,6 +96,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .empty_animation {
+        width: 2rem;
+    }
 }
 
 .pages {
