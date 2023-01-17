@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Button, Container, Navbar } from "react-bootstrap";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
@@ -51,10 +51,12 @@ export default function Home() {
     await axios.patch(`/api/products/${id}`, { favorite: value });
   };
 
-  const searchLowerCase = search.toLocaleLowerCase();
-  const filteredSearch = products.filter((product) =>
-    product.name.toLocaleLowerCase().includes(searchLowerCase)
-  );
+  const filteredSearch = useMemo(() => {
+    const searchLowerCase = search.toLocaleLowerCase();
+    return products.filter((product) =>
+      product.name.toLocaleLowerCase().includes(searchLowerCase)
+    );
+  }, [products, search]);
 
   return (
     <>
