@@ -1,20 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useMemo, useState } from 'react';
-import Pagination from '../Pagination';
+import React, { useState } from 'react';
+import { Pagination } from 'react-bootstrap';
 
+import usePagination from '../../hooks/usePagination';
 import styles from './Bestsellers.module.scss';
 
 
-let PageSize = 10;
-
 export default function BestSellers({ products }) {
     const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 6;
+    const pageCount = Math.ceil(products.length / productsPerPage);
 
-    const currentTableData = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
-        const lastPageIndex = firstPageIndex + PageSize;
-        return products.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, products]);
+    const productsToShow = usePagination({
+        currentPage,
+        items: products,
+        itemsPerPage: productsPerPage,
+    });
+
+    const onNextPage = () => setCurrentPage(currentPage + 1);
+    const onPreviousPage = () => setCurrentPage(currentPage - 1);
 
     return (
         <div className={styles.best_container}>
@@ -22,19 +26,17 @@ export default function BestSellers({ products }) {
                 <h3>Mais vendidos</h3>
 
                 <div className={styles.next_prev_button}>
-                    <Pagination
-                        currentPage={currentPage}
-                        totalCount={products.length}
-                        pageSize={PageSize}
-                        onPageChange={page => setCurrentPage(page)}
-                    />
+                    <Pagination>
+                        <Pagination.Prev onClick={onPreviousPage} disabled={currentPage === 1} />
+                        <Pagination.Next onClick={onNextPage} disabled={currentPage === pageCount} />
+                    </Pagination>
                 </div>
             </div>
             <ul className={styles.list_container}>
                 {
                     products.length
                         ?
-                        currentTableData.map((product) => (
+                        productsToShow.map((product) => (
                             <li key={product.id}>
                                 <img src={product.image} alt={product.alt} />
                                 <span>
@@ -53,7 +55,7 @@ export default function BestSellers({ products }) {
                 }
             </ul>
             <span className={styles.pages}>
-                <p>Página {currentPage} de {products.lenght}</p>
+                <p>Página {currentPage} de {pageCount}</p>
             </span>
         </div>
     );
