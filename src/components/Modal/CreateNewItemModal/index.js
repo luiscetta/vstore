@@ -2,9 +2,11 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
-import CurrencyInput from 'react-currency-input-field';
+// import CurrencyInput from 'react-currency-input-field';
+import { mask, unMask } from 'remask';
 
 import styles from './CreateNewItemModal.module.scss';
+
 
 export default function CreateNewItemModal({ handleCloseModal, reloadProducts, show }) {
     const imageDefault = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
@@ -37,9 +39,13 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
         reader.readAsDataURL(file);
     };
 
-    const formatPrice = (e = {}, maskedValue) => {
-        const value = maskedValue.replace('R$', '');
-        setProductPrice(value);
+    // const formatPrice = (e = {}, maskedValue) => {
+    //     const value = maskedValue.replace('R$', '');
+    //     setProductPrice(value);
+    // }
+
+    const formatPrice = e => {
+        setProductPrice(mask(unMask(e.target.value), ['999,99', '9.999,99']));
     }
 
     return (
@@ -73,20 +79,18 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
                             placeholder='Digite o nome do produto'
                             onChange={({ target }) => setProductName(target.value)}
                         />
-                        <label htmlFor="price">Preço</label>
-                        <CurrencyInput
-                            id="price"
-                            required
-                            prefix="R$"
-                            decimalSeparator=","
-                            groupSeparator="."
-                            precision={2}
-                            allowNegativeValue={false}
-                            name="price"
-                            placeholder='R$00,00'
-                            onValueChange={formatPrice}
-                            value={productPrice}
-                        />
+                        <label htmlFor="price">Preço do produto</label>
+                        <div className={styles.input_price_group}>
+                            <span>R$</span>
+                            <input
+                                id="price"
+                                required
+                                name="price"
+                                placeholder='R$00,00'
+                                onChange={formatPrice}
+                                value={productPrice}
+                            />
+                        </div>
                         <label htmlFor="stock">Estoque</label>
                         <input
                             id="stock"

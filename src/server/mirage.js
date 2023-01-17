@@ -12,10 +12,6 @@ export function makeServer() {
             products.shoes.forEach((shoe) => {
                 server.create("product", { ...shoe, sales: Math.floor(Math.random() * 500), code: `#MLB${Math.floor(Math.random() * 6458755536)}` });
             });
-
-            // products.eletronics.forEach((eletronic, i) => {
-            //     server.create("product", { ...eletronic, id: i + 1, sales: Math.floor(Math.random() * 250), code: `MLB${Math.floor(Math.random() * 6458755536)}` });
-            // });
         },
 
         routes() {
