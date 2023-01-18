@@ -6,7 +6,6 @@ import DropDownMenu from '../DropdownMenu';
 
 import styles from './Header.module.scss';
 
-
 export default function Header() {
     return (
         <>

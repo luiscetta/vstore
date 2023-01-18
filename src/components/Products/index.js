@@ -5,7 +5,6 @@ import ProductTable from '../ProductTable';
 
 import styles from './Products.module.scss';
 
-
 export default function Products({ products, showFavorites, search }) {
     const [markedAsFavorite, setMarkedAsFavorite] = useState(products.filter(p => p.favorite));
     const [chosenProducts, setChosenProducts] = useState(products);

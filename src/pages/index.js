@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import axios from 'axios';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Navbar } from "react-bootstrap";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 

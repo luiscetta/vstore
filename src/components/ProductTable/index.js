@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { Pagination, Table } from 'react-bootstrap';
-import Lottie from 'lottie-react';
 
 import usePagination from '../../hooks/usePagination';
-import emptyBoxAnimation from '../assets/json/empty.json';
 import LikeAnimation from '../Animations/LikeAnimation';
+import NoResultsAnimation from '../Animations/NoResultsAnimations';
 import styles from './ProductTable.module.scss';
-
 
 export default function ProductTable({ favoriteHandler, markedAsFavorite, products, title }) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -77,7 +75,7 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                                             </td>
                                             <td className={styles.stock}>{product.stock} und</td>
                                             <td className={styles.fav}>
-                                                <LikeAnimation 
+                                                <LikeAnimation
                                                     className={styles.like}
                                                     fill={!!markedAsFavorite.find(p => p.id === product.id)}
                                                     onClick={() => handleHeartClick(product)}
@@ -92,17 +90,10 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                             <p>Página {currentPage} de {pageCount}</p>
                         </span>
                     </>
-
                     :
-
                     <div className={styles.empty_table}>
                         <h2>Nenhum produto para exibir.</h2>
-                        <Lottie
-                            animationData={emptyBoxAnimation}
-                            loop={true}
-                            autoplay={true}
-                            style={{ height: '20rem', marginTop: '2rem' }}
-                        />
+                        <NoResultsAnimation />
                     </div>
 
             }

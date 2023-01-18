@@ -5,7 +5,6 @@ import { Pagination } from 'react-bootstrap';
 import usePagination from '../../hooks/usePagination';
 import styles from './Bestsellers.module.scss';
 
-
 export default function BestSellers({ products }) {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 6;
@@ -46,9 +45,7 @@ export default function BestSellers({ products }) {
                                 <a href='#'>{product.name}</a>
                             </li>
                         ))
-
                         :
-
                         <div className={styles.empty_best_list}>
                             <h3>Não vendeu o bastante!</h3>
                         </div>
