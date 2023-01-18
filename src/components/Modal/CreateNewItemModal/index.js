@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
-// import CurrencyInput from 'react-currency-input-field';
 import { mask, unMask } from 'remask';
 
 import styles from './CreateNewItemModal.module.scss';
@@ -38,11 +37,6 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
         reader.addEventListener("load", () => setProductImage(reader.result));
         reader.readAsDataURL(file);
     };
-
-    // const formatPrice = (e = {}, maskedValue) => {
-    //     const value = maskedValue.replace('R$', '');
-    //     setProductPrice(value);
-    // }
 
     const formatPrice = e => {
         setProductPrice(mask(unMask(e.target.value), ['999,99', '9.999,99']));

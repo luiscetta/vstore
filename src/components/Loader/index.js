@@ -7,7 +7,7 @@ import styles from './Loader.module.scss';
 export default function Loading() {
     return (
         <div className={styles.loader}>
-            <Loader color="#9765d8" />
+            <Loader color="var(--details-purple)" />
         </div>
     )
 }

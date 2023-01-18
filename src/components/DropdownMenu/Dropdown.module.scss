@@ -18,7 +18,21 @@
     border-color: transparent;
 }
 
-.toggle_button:active {
-    background-color: transparent;
-    border-color: transparent;
+// MEDIA___________________________________________________________________
+@media screen and (max-width: 768px) {
+    .toggle_button {
+        border: 1px solid var(--details-purple);
+    }
+
+    .toggle_button:focus {
+        border: 1px solid var(--header-orange);
+    }
+
+    .toggle_button:active {
+        border: 1px solid var(--header-orange);
+    }
+
+    .menu {
+        margin-left: -9rem;
+    }
 }

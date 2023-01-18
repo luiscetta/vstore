@@ -80,3 +80,530 @@
         }
     }
 }
+
+// MEDIA_______________________________________________________________________________________
+@media screen and (width: 1024px) and (height: 1366px) {
+    .best_container {
+        width: 98%;
+        margin: 0 auto;
+
+        .title_container {
+            margin: 2rem auto 1rem;
+            width: 89%;
+        }
+
+        .list_container {
+            margin: 0 auto;
+            width: 56rem;
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                margin-bottom: 1rem;
+
+                img {
+                    width: 8.5rem;
+                }
+
+                span {
+                    width: 39%;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 89%;
+        }
+    }
+}
+
+@media screen and (width: 834px) and (height: 1194px) {
+    .best_container {
+        width: 98%;
+        margin: 0 auto;
+
+        .title_container {
+            margin: 2rem auto 1rem;
+            width: 89%;
+        }
+
+        .list_container {
+            margin: 0 auto;
+            width: 46rem;
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                margin-bottom: 1rem;
+
+                img {
+                    width: 8.5rem;
+                }
+
+                span {
+                    width: 45%;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 89%;
+        }
+    }
+}
+
+@media screen and (width: 820px) {
+    .best_container {
+        width: 98%;
+        margin: 0 auto;
+
+        .title_container {
+            margin: 2rem auto 1rem;
+            width: 89%;
+        }
+
+        .list_container {
+            margin: 0 auto;
+            width: 44rem;
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                margin-bottom: 1rem;
+
+                img {
+                    width: 8.5rem;
+                }
+
+                span {
+                    width: 89%;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 89%;
+        }
+    }
+}
+
+@media screen and (width: 810px) and (height: 1080px) {
+    .best_container {
+        width: 98%;
+        margin: 0 auto;
+
+        .title_container {
+            margin: 2rem auto 1rem;
+            width: 89%;
+        }
+
+        .list_container {
+            margin: 0 auto;
+            width: 44rem;
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                margin-bottom: 1rem;
+
+                img {
+                    width: 8.5rem;
+                }
+
+                span {
+                    width: 48%;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 89%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .best_container {
+        width: 98%;
+        margin: 0 auto;
+
+        .title_container {
+            margin: 2rem auto 1rem;
+            width: 93%;
+        }
+
+        .list_container {
+            width: 25rem;
+
+            li {
+                list-style: none;
+                text-align: center;
+
+                margin-bottom: 1rem;
+
+                img {
+                    width: 8.5rem;
+                }
+
+                span {
+                    width: 89%;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 0 auto;
+            width: 98%;
+        }
+    }
+}
+
+@media screen and (width: 390px) and (height: 844px) {
+    .best_container {
+        .list_container {
+            width: 23rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 8.5rem;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 384px) and (height: 854px) {
+    .best_container {
+        .list_container {
+            width: 23rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 8.5rem;
+                }
+
+                a {
+                    font-size: 0.9rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 375px) and (height: 812px) {
+    .best_container {
+        .list_container {
+            width: 21.5rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 7.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 375px) and (height: 667px) {
+    .best_container {
+        .list_container {
+            width: 21.5rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 7.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 360px) and (height: 800px) {
+    .best_container {
+        .list_container {
+            width: 21.5rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 7.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 360px) and (height: 760px) {
+    .best_container {
+        .list_container {
+            width: 21.5rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 7.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 360px) and (height: 740px) {
+    .best_container {
+        .list_container {
+            width: 21.5rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 7.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}
+
+@media screen and (width: 320px) and (height: 568px) {
+    .best_container {
+        .list_container {
+            width: 19rem;
+            margin: 0 auto;
+
+            li {
+                img {
+                    width: 6.5rem;
+                }
+
+                a {
+                    font-size: 0.85rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .empty_best_list {
+                margin: 0 auto;
+                width: 100%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .pages {
+            margin: 1rem auto 0;
+            width: 97%;
+        }
+    }
+}

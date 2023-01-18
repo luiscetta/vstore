@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { Pagination, Table } from 'react-bootstrap';
-import { HeartFilledIcon, HeartIcon } from '@radix-ui/react-icons';
 import Lottie from 'lottie-react';
 
 import usePagination from '../../hooks/usePagination';
-import animationData from '../assets/json/empty.json';
+import emptyBoxAnimation from '../assets/json/empty.json';
+import LikeAnimation from '../Animations/LikeAnimation';
 import styles from './ProductTable.module.scss';
 
 
@@ -22,13 +22,17 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
 
     const onNextPage = () => setCurrentPage(currentPage + 1);
     const onPreviousPage = () => setCurrentPage(currentPage - 1);
+    const handleHeartClick = async (product) => {
+        await favoriteHandler(product);
+    };
 
     useEffect(() => {
         if (currentPage > pageCount) setCurrentPage(1);
     }, [currentPage, pageCount]);
 
+
     return (
-        <>
+        <div className={styles.product_table_container}>
             <div className={styles.title_container}>
                 <h3>{title}</h3>
                 <div className={styles.next_prev_button}>
@@ -43,7 +47,7 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                 products.length
                     ?
                     <>
-                        <Table className={styles.table_container}>
+                        <Table size="sm" responsive className={styles.table_container}>
                             <thead>
                                 <tr>
                                     <th>Identificação</th>
@@ -55,8 +59,8 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                             </thead>
                             <tbody>
                                 {
-                                    productsToShow.map((product, idx) => (
-                                        <tr key={idx}>
+                                    productsToShow.map((product) => (
+                                        <tr key={product.id}>
                                             <td className={styles.item}>
                                                 <img src={product.image} alt={product.name} />
                                                 <span>
@@ -73,14 +77,11 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
                                             </td>
                                             <td className={styles.stock}>{product.stock} und</td>
                                             <td className={styles.fav}>
-                                                <button onClick={() => favoriteHandler(product)} >
-                                                    {
-                                                        markedAsFavorite.find(p => p.id === product.id) ?
-                                                            <HeartFilledIcon className={styles.liked} />
-                                                            :
-                                                            <HeartIcon className={styles.like} />
-                                                    }
-                                                </button>
+                                                <LikeAnimation 
+                                                    className={styles.like}
+                                                    fill={!!markedAsFavorite.find(p => p.id === product.id)}
+                                                    onClick={() => handleHeartClick(product)}
+                                                />
                                             </td>
                                         </tr>
                                     ))
@@ -96,15 +97,15 @@ export default function ProductTable({ favoriteHandler, markedAsFavorite, produc
 
                     <div className={styles.empty_table}>
                         <h2>Nenhum produto para exibir.</h2>
-                        {/* <Lottie
-                            style={{ height: '8rem' }}
-                            animationData={animationData}
+                        <Lottie
+                            animationData={emptyBoxAnimation}
                             loop={true}
                             autoplay={true}
-                        /> */}
+                            style={{ height: '20rem', marginTop: '2rem' }}
+                        />
                     </div>
 
             }
-        </>
+        </div>
     );
 }

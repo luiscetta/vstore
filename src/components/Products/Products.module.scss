@@ -2,3 +2,10 @@
     width: 90%;
     margin: 0 auto;
 }
+
+// MEDIA____________________________________________________
+@media screen and (max-width: 768px) {
+    .products_container {
+        width: 100%;
+    }
+}
