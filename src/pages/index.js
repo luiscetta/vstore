@@ -11,6 +11,7 @@ import Loading from "../components/Loader";
 import CreateNewItemModal from "../components/Modal/CreateNewItemModal";
 
 import styles from '../../styles/Home.module.scss';
+import { ErrorToast } from "../utils/toaster";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -38,7 +39,7 @@ export default function Home() {
           setBestSellers(allProducts.filter(p => p.sales > 200));
         }
       } catch (err) {
-        console.error(err);
+        ErrorToast(err);
       } finally {
         setLoading(false);
       }
@@ -95,6 +96,18 @@ export default function Home() {
             />
           </main>
       }
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
 
       <ToastContainer
         position="top-right"
