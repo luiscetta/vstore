@@ -39,7 +39,7 @@ export default function Home() {
           setBestSellers(allProducts.filter(p => p.sales > 200));
         }
       } catch (err) {
-        ErrorToast(err);
+        ErrorToast('Houve um erro!');
       } finally {
         setLoading(false);
       }
