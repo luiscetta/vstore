@@ -3,6 +3,12 @@
 First, run the development server:
 
 ```bash
+npm install
+# or
+yarn install
+
+# to install the dependencies. After that, run:
+
 npm run dev
 # or
 yarn dev
