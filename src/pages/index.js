@@ -72,11 +72,11 @@ export default function Home() {
       <Navbar className={styles.navbar_buttons}>
         <Container className={styles.container_buttons}>
           <div className={styles.left_buttons}>
-            <Button className={showFavorites ? styles.home_button_unselected : styles.home_button} onClick={() => setShowFavorites(false)}>Todas</Button>
-            <Button className={showFavorites ? styles.favorite_button : styles.favorite_button_unselected} onClick={() => setShowFavorites(true)}>Favoritos</Button>
+            <button className={showFavorites ? styles.home_button_unselected : styles.home_button} onClick={() => setShowFavorites(false)}>Todas</button>
+            <button className={showFavorites ? styles.favorite_button : styles.favorite_button_unselected} onClick={() => setShowFavorites(true)}>Favoritos</button>
           </div>
 
-          <Button className={styles.create_button} onClick={handleShowModal}>Criar novo</Button>
+          <button className={styles.create_button} onClick={handleShowModal}>Criar novo</button>
           <CreateNewItemModal handleCloseModal={handleCloseModal} show={showModal} reloadProducts={reloadProducts} />
         </Container>
       </Navbar>

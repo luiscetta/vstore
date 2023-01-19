@@ -72,10 +72,8 @@
     .home_button_unselected,
     .favorite_button_unselected {
       background-color: #d3281180;
-    }
 
-    .create_button:disabled {
-      background-color: rgba(211, 40, 17, 0.5);
+      @extend .home_button;
     }
   }
 }
