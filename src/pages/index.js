@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet";
-import axios from 'axios';
+import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Navbar } from "react-bootstrap";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
-import BestSellers from '../components/BestSellers';
-import Products from '../components/Products';
-import Loading from '../components/Loader';
+import BestSellers from "../components/BestSellers";
+import Products from "../components/Products";
+import Loading from "../components/Loader";
 import CreateNewItemModal from "../components/Modal/CreateNewItemModal";
 
 import styles from '../../styles/Home.module.scss';
@@ -75,7 +75,7 @@ export default function Home() {
             <Button className={showFavorites ? styles.favorite_button : styles.favorite_button_unselected} onClick={() => setShowFavorites(true)}>Favoritos</Button>
           </div>
 
-          <button onClick={handleShowModal}>Criar novo</button>
+          <Button className={styles.create_button} onClick={handleShowModal}>Criar novo</Button>
           <CreateNewItemModal handleCloseModal={handleCloseModal} show={showModal} reloadProducts={reloadProducts} />
         </Container>
       </Navbar>

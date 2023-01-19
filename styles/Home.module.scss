@@ -59,7 +59,7 @@
 
     .home_button,
     .favorite_button,
-    button {
+    .create_button {
       padding: 0.4rem;
       border: none;
       text-align: center;
@@ -74,7 +74,7 @@
       background-color: #d3281180;
     }
 
-    button:disabled {
+    .create_button:disabled {
       background-color: rgba(211, 40, 17, 0.5);
     }
   }

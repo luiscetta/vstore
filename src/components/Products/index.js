@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState, useMemo } from "react";
+import axios from "axios";
 
-import ProductTable from '../ProductTable';
+import ProductTable from "../ProductTable";
 
-import styles from './Products.module.scss';
+import styles from "./Products.module.scss";
 
 export default function Products({ products, showFavorites, search }) {
     const [markedAsFavorite, setMarkedAsFavorite] = useState(products.filter(p => p.favorite));

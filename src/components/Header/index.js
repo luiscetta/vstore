@@ -1,10 +1,10 @@
-import React from 'react';
-import { Container, Navbar } from 'react-bootstrap';
-import * as Avatar from '@radix-ui/react-avatar';
+import React from "react";
+import { Container, Navbar } from "react-bootstrap";
+import * as Avatar from "@radix-ui/react-avatar";
 
-import DropDownMenu from '../DropdownMenu';
+import DropDownMenu from "../DropdownMenu";
 
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
 export default function Header() {
     return (

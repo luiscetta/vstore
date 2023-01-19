@@ -1,6 +1,6 @@
-import Lottie from 'lottie-react';
+import Lottie from "lottie-react";
 
-import animationData from '../../assets/json/empty.json'
+import animationData from "../../assets/json/empty.json";
 
 export default function NoResultsAnimation() {
     return (

@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
-import { Pagination } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Pagination } from "react-bootstrap";
 
-import usePagination from '../../hooks/usePagination';
-import styles from './Bestsellers.module.scss';
+import usePagination from "../../hooks/usePagination";
+import styles from "./Bestsellers.module.scss";
 
 export default function BestSellers({ products }) {
     const [currentPage, setCurrentPage] = useState(1);

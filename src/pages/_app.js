@@ -1,9 +1,9 @@
-import '../../styles/globals.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { SSRProvider } from 'react-bootstrap'
+import "../../styles/globals.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { SSRProvider } from "react-bootstrap";
 
-import Header from '../components/Header';
-import { makeServer } from '../server/mirage';
+import Header from "../components/Header";
+import { makeServer } from "../server/mirage";
 
 
 makeServer({ environment: "development" })

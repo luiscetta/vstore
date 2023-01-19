@@ -1,7 +1,7 @@
-import React from 'react';
-import { Circles as Loader } from 'react-loader-spinner';
+import React from "react";
+import { Circles as Loader } from "react-loader-spinner";
 
-import styles from './Loader.module.scss';
+import styles from "./Loader.module.scss";
 
 export default function Loading() {
     return (

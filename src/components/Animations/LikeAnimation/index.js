@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
 
-import likeAnimation from '../../assets/json/like.json';
+import likeAnimation from "../../assets/json/like.json";
 
 export default function LikeAnimation({ className, fill, onClick }) {
     const lottieRef = useRef();
@@ -12,7 +12,7 @@ export default function LikeAnimation({ className, fill, onClick }) {
         if (onClick) await onClick();
         toggleInteraction();
     }
-    
+
     useEffect(() => {
         const { playSegments, setDirection, setSpeed } = lottieRef.current;
         if (clicked) {

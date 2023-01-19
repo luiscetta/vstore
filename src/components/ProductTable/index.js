@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
-import { Pagination, Table } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Pagination, Table } from "react-bootstrap";
 
-import usePagination from '../../hooks/usePagination';
-import LikeAnimation from '../Animations/LikeAnimation';
-import NoResultsAnimation from '../Animations/NoResultsAnimations';
-import styles from './ProductTable.module.scss';
+import usePagination from "../../hooks/usePagination";
+import LikeAnimation from "../Animations/LikeAnimation";
+import NoResultsAnimation from "../Animations/NoResultsAnimations";
+import styles from "./ProductTable.module.scss";
 
 export default function ProductTable({ favoriteHandler, markedAsFavorite, products, title }) {
     const [currentPage, setCurrentPage] = useState(1);
