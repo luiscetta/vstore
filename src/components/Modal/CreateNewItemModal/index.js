@@ -4,6 +4,8 @@ import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { mask, unMask } from "remask";
 
+import { SuccessToast } from "../../../utils/toaster";
+
 import styles from './CreateNewItemModal.module.scss';
 
 export default function CreateNewItemModal({ handleCloseModal, reloadProducts, show }) {
@@ -16,7 +18,6 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         axios.post("api/products", {
             image: productImage,
             name: productName,
@@ -25,6 +26,7 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
         })
             .then(() => {
                 reloadProducts();
+                SuccessToast('Produto criado com sucesso!');
                 handleCloseModal();
             });
     }
@@ -42,6 +44,7 @@ export default function CreateNewItemModal({ handleCloseModal, reloadProducts, s
 
     return (
         <>
+
             <Modal
                 centered
                 show={show}

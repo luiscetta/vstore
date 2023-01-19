@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Navbar } from "react-bootstrap";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { ToastContainer } from 'react-toastify';
 
 import BestSellers from "../components/BestSellers";
 import Products from "../components/Products";
@@ -94,6 +95,19 @@ export default function Home() {
             />
           </main>
       }
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   )
 }
