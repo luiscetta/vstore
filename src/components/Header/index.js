@@ -12,7 +12,7 @@ export default function Header() {
             <Navbar className={styles.navbar_brand}>
                 <Container className={styles.container_brand}>
                     <Navbar.Brand href="/" className={styles.brand}>
-                        XCO<span>+</span>
+                        <span>V</span>STORE<span>+</span>
                     </Navbar.Brand>
                     <div className={styles.avatar}>
                         <Avatar.Root className={styles.avatar_root}>
